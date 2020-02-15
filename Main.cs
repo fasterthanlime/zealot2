@@ -8,13 +8,11 @@ public class Main : Spatial
     public override void _Ready()
     {
         var i = 0;
-        var textures = new string[] {"BmarksmanL", "Bmonk", "Rpeasant"};
+        var textures = new string[] { "BmarksmanL", "Bmonk", "Rpeasant" };
 
-        foreach (var card in new string[] {"Card1", "Card2", "Card3"})
+        foreach (var card in new string[] { "Card1", "Card2", "Card3" })
         {
-            var mi = GetNode<MeshInstance>($"{card}/StaticBody/MeshInstance");
-            mi.Mesh = mi.Mesh.Duplicate() as Mesh;
-
+            var mi = GetNode<MeshInstance>($"{card}/StaticBody/CardMesh");
             var mat = mi.Mesh.SurfaceGetMaterial(0).Duplicate() as SpatialMaterial;
             var tex = textures[i++];
             mat.AlbedoTexture = ResourceLoader.Load($"res://Cards/{tex}.png") as Texture;
